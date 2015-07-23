@@ -5,3 +5,30 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+starting_line_up = ["Sherry", "Boris", "Vicente", "Matte", "Jack", "Sherry",
+ "Matte", "Kevin", "Kevin", "Vicente", "Zoe", "Kevin",
+ "Matte", "Zoe", "Jay", "Boris", "Eadon", "Sherry",
+ "Franky", "Sherry", "Matte", "Franky", "Franky", "Kevin",
+ "Boris", "Franky", "Vicente", "Luis", "Eadon", "Boris",
+ "Kevin", "Matte", "Jay", "James", "Kevin", "Sherry",
+ "Sherry", "Jack", "Sherry", "Jack"]
+
+starting_users = starting_line_up.uniq
+
+# Creating Users
+
+starting_users.each do |name|
+ 	User.create(name: name, email: "#{name}@#{name}.com", password: "#{name}123")
+end
+
+
+# Creating Day Assignments
+date = DateTime.now.to_date
+starting_line_up.each do |name|
+	user = User.where(name: name)[0]
+	DayAssignment.create!(user: user, date: date)
+	date = date.tomorrow
+end
+
