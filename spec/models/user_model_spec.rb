@@ -1,6 +1,6 @@
 require 'rails_helper.rb'
 
-describe "user model" do
+describe "User Model" do
 
 	it "should save a user if all the fields are filled in correctly" do 
 
