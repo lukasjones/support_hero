@@ -9,31 +9,8 @@
 	<input type="submit" value="Submit" />
 </form>
 
-<table class="calendar" border='1'>
-	<tr>
-		<th>Sunday</th>
-		<th>Monday</th>
-		<th>Tuesday</th>
-		<th>Wednesday</th>
-		<th>Thursday</th>
-		<th>Friday</th>
-		<th>Saturday</th>
-	</tr>
 
 
-	<% month = get_calendar_month(8, 2015) %>
 
-	<% (month.length/7).times do |i| %>
-		<tr>
-			<td class="Sunday"><%= month[0 + (i*7)] %></td>
-			<td class="Monday"><%= month[1 + (i*7)] %></td>
-			<td class="Tuesday"><%= month[2 + (i*7)] %></td>
-			<td class="Wednesday"><%= month[3 + (i*7)] %></td>
-			<td class="Thursday"><%= month[4 + (i*7)] %></td>
-			<td class="Friday"><%= month[5 + (i*7)] %></td>
-			<td class="Saturday"><%= month[6 + (i*7)] %></td>
-		</tr>
+<%= render 'partials/calendar' %>
 
-	<% end %>
-
-</table>

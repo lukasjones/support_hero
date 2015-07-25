@@ -34,17 +34,32 @@ module UsersHelper
 
 	def put_days_in_order(month_array)
 
-		spaces = 0
-		days_of_the_week_hash = {"Monday" => 1, "Tuesday" => 2, "Wednesday" => 3, "Thursday" => 4, "Friday" => 5, "Saturday" => 6 }
-		if month_array[0].strftime("%A") != "Sunday"
-			spaces = days_of_the_week_hash[month_array[0].strftime("%A")]
+		days_of_the_week_hash = {"Sunday" => 0, "Monday" => 1, "Tuesday" => 2, "Wednesday" => 3, "Thursday" => 4, "Friday" => 5, "Saturday" => 6 }
+			beginning_spaces = days_of_the_week_hash[month_array[0].strftime("%A")]
+
+			trailing_spaces = 7 - (days_of_the_week_hash[month_array[-1].strftime("%A")] + 1)
+
+
+		month_array.map! do |day|
+			if DayAssignment.where(date: day)[0]
+				blah = DayAssignment.where(date: day)[0].user
+				[day.day, blah.id, blah.name]
+			else
+				[day.day, "", ""]
+			end
+
 		end
 
-		month_array.map! {|day| day.day }
+		# month_array.map! {|day| day.day }
 
-		spaces.times do
+		beginning_spaces.times do
 			month_array.unshift("")
 		end
+
+		trailing_spaces.times do 
+			month_array.push("")
+		end
+
 
 		month_array
 
