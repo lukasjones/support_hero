@@ -1,0 +1,49 @@
+<table class="calendar" border='1'>
+	<tr>
+		<th>Sunday</th>
+		<th>Monday</th>
+		<th>Tuesday</th>
+		<th>Wednesday</th>
+		<th>Thursday</th>
+		<th>Friday</th>
+		<th>Saturday</th>
+	</tr>
+
+
+	<% month = get_calendar_month(7, 2015) %>
+
+	<% (month.length/7 ).times do |i| %>
+		<tr>
+			<td class="Sunday">
+				<div class="num"><%= month[0 + (i*7)][0] %></div>
+				<a class="name" href="/users/<%= month[0 + (i*7)][1] %>"><%= month[0 + (i*7)][2] %></a>
+			</td>
+			<td class="Monday">
+				<div class="num"><%= month[1 + (i*7)][0] %></div>
+				<a class="name" href="/users/<%= month[1 + (i*7)][1] %>"><%= month[1 + (i*7)][2] %></a>
+			</td>
+			<td class="Tuesday">
+				<div class="num"><%= month[2 + (i*7)][0] %></div>
+				<a class="name" href="/users/<%= month[2 + (i*7)][1] %>"><%= month[2 + (i*7)][2] %></a>
+			</td>
+			<td class="Wednesday">
+				<div class="num"><%= month[3 + (i*7)][0] %></div>
+				<a class="name" href="/users/<%= month[3 + (i*7)][1] %>"><%= month[3 + (i*7)][2] %></a>
+			</td>
+			<td class="Thursday">
+				<div class="num"><%= month[4 + (i*7)][0] %></div>
+				<a class="name" href="/users/<%= month[4 + (i*7)][1] %>"><%= month[4 + (i*7)][2] %></a>
+			</td>
+			<td class="Fay">
+				<div class="num"><%= month[5 + (i*7)][0] %></div>
+				<a class="name" href="/users/<%= month[5 + (i*7)][1] %>"><%= month[5 + (i*7)][2] %></a>
+			</td>
+			<td class="Saturday">
+				<div class="num"><%= month[6 + (i*7)][0] %></div>
+				<a class="name" href="/users/<%= month[6 + (i*7)][1] %>"><%= month[6 + (i*7)][2] %></a>
+			</td>
+		</tr>
+
+	<% end %>
+
+</table>
