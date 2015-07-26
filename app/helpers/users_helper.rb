@@ -1,18 +1,18 @@
 module UsersHelper
 
-	def current_month
-		current_month_array = []
-		month = DateTime.now.month
-		year = DateTime.now.year
-		current_day = "1-#{month}-#{year}".to_date
+	# def current_month
+	# 	current_month_array = []
+	# 	month = DateTime.now.month
+	# 	year = DateTime.now.year
+	# 	current_day = "1-#{month}-#{year}".to_date
 
-		until current_day.month != month do
-			current_month_array.push(current_day)
-			current_day = current_day.tomorrow.to_date
-		end
+	# 	until current_day.month != month do
+	# 		current_month_array.push(current_day)
+	# 		current_day = current_day.tomorrow.to_date
+	# 	end
 
-		current_month_array
-	end
+	# 	current_month_array
+	# end
 
 	def get_calendar_month(month, year)
 
