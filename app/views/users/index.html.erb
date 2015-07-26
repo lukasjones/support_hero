@@ -3,6 +3,11 @@
 		Today's Support Hero is "<%= @todays_hero.name %>"
 	</h1>
 </header>
+<% if !@errors.empty? %>
+	<div class="errors">
+		<%= @errors[0] %>
+	</div>
+<% end %>
 
 <%= form_for :find, :url => {controller: "users", action: "find"}, method: "post" do |f| %>
 	<%= f.text_field :name %>

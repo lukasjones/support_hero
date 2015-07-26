@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 			redirect_to user
 		else
 			@todays_hero = DayAssignment.where(date: DateTime.now.to_date)[0].user
-			@error = ["That user doesn't exist"]
+			@errors = ["The name you typed in does not exist"]
 			render "index"
 		end
 	end
