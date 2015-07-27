@@ -1,21 +1,23 @@
 <header>
 	<h1>
-		Today's Support Hero is "<%= @todays_hero.name %>"
+		<%= get_header_phrase %>
 	</h1>
 </header>
-<% if !@errors.empty? %>
-	<div class="errors">
-		<%= @errors[0] %>
-	</div>
-<% end %>
+<div class="form-container">
+	<% if !@errors.empty? %>
+		<div class="errors">
+			<%= @errors[0] %>
+		</div>
+	<% end %>
 
-<%= form_for :find, :url => {controller: "users", action: "find"}, method: "post" do |f| %>
-	<%= f.text_field :name %>
-	<%= f.submit :submit %>
-<% end %>
+	<%= form_for :find, :url => {controller: "users", action: "find"}, method: "post" do |f| %>
+		<%= f.text_field :name, placeholder: "Enter your name to see your schedule and make changes" %>
+		<%= f.submit :submit %>
+	<% end %>
+</div>
 
 <!-- <form action="/users/find" method="post">
-	<input type="text" placeholder="Enter your name to see your schedule and make changes" name="name" />
+	<input type="text"  />
 	<input type="submit" value="Submit" />
 </form>
  -->
