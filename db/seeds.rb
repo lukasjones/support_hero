@@ -28,7 +28,16 @@ end
 date = DateTime.now.to_date
 starting_line_up.each do |name|
 	user = User.where(name: name)[0]
-	DayAssignment.create!(user: user, date: date)
-	date = date.tomorrow
+
+	assignment = DayAssignment.new(user: user, date: date)
+	if assignment.valid?
+		assignment.save
+		date = date.tomorrow
+	else
+		while !assignment.valid?
+			date = date.tomorrow
+			assignment = DayAssignment.new(user: user, date: date)
+		end
+	end
 end
 
