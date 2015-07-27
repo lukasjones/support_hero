@@ -14,6 +14,15 @@ module UsersHelper
 	# 	current_month_array
 	# end
 
+	def get_header_phrase
+		day = DateTime.now.to_date.strftime("%A")
+		if day === "Saturday" || day === "Sunday"
+			"It's the weekend. No support for you today!"
+		else
+			DayAssignment.where(date: DateTime.now.to_date)
+		end
+	end
+
 	def get_calendar_month(month, year)
 
 		month_array = []

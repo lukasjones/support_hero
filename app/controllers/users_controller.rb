@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 	def index
 		@errors = []
-		@todays_hero = DayAssignment.where(date: DateTime.now.to_date)[0].user
 	end
 
 	def show

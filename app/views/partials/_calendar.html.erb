@@ -1,4 +1,6 @@
-<table class="calendar" border='1'>
+<% month = get_calendar_month(7, 2015) %>
+
+<table class="calendar">
 	<tr>
 		<th>Sunday</th>
 		<th>Monday</th>
@@ -10,7 +12,6 @@
 	</tr>
 
 	
-	<% month = get_calendar_month(7, 2015) %>
 
 	<% (month.length/7 ).times do |i| %>
 		<tr>
