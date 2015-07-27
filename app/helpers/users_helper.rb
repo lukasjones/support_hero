@@ -19,7 +19,8 @@ module UsersHelper
 		if day === "Saturday" || day === "Sunday"
 			"It's the weekend. No support for you today!"
 		else
-			DayAssignment.where(date: DateTime.now.to_date)
+			user = DayAssignment.where(date: DateTime.now.to_date)[0].user
+			"Today's Support Hero is #{user.name}"
 		end
 	end
 
