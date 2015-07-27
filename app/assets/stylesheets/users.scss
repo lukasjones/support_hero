@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-html, body, header, h1, h2, h3, h4, h5, h6 {
+html, body, header, h1, h2, h3, h4, h5, h6, input {
 	margin: 0;
 	padding: 0;
 }
@@ -37,8 +37,8 @@ header h1 {
 .form-container input[type='submit'] {
 	display: inline-block;
 	width: 39%;
-	border-radius: none;
 	padding: 20px;
+	font-size: 20px;
 }
 
 
