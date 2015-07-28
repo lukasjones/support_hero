@@ -12,15 +12,4 @@ module UsersHelper
 
 	
 
-
-
-
-
-
-
-
-
-
-
-
 end
