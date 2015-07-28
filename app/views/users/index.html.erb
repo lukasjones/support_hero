@@ -16,11 +16,7 @@
 	<% end %>
 </div>
 
-<!-- <form action="/users/find" method="post">
-	<input type="text"  />
-	<input type="submit" value="Submit" />
-</form>
- -->
+
 
 <div class="table-container">
 	<%= render partial: 'calendar/calendar', :locals => {month: DateTime.now.to_date.month, year: DateTime.now.to_date.year} %>

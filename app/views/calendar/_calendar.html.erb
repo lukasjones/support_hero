@@ -3,7 +3,7 @@
 <a class="cal_link" href="/changemonth/<%= month - 1 %>">down</a>
 <a class="cal_link" href="/changemonth/<%= month + 1 %>">up</a>
 
-<h3><%= month %></h3>
+<h3 class="calendar-header"><%= "#{month_integer_to_string(month)} #{session[:year]}" %></h3>
 <table class="calendar">
 	<tr>
 		<th>Sunday</th>

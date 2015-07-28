@@ -1,6 +1,9 @@
 module CalendarHelper
 
 	def get_calendar_month(month, year)
+		# set the current year in a session if not already set 
+		session[:year] = DateTime.now.to_date.year - 1 unless session[:year]
+
 
 		month_array = []
 		
@@ -53,7 +56,10 @@ module CalendarHelper
 
 	end
 
-
+	def month_integer_to_string(num)
+		month_hash = {1 => "January", 2 => "February", 3 => "March", 4 => "April", 5 => "May", 6 => "June", 7 => "July", 8 => "August", 9 => "September", 10 => "October", 11 => "November", 12 => "December"}
+		month_hash[num]
+	end
 
 
 
