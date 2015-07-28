@@ -5,6 +5,12 @@ Rails.application.routes.draw do
 
   post 'find' => 'users#find'
 
+  put '/changemonth/:num' => 'calendar#change_month'
+
+  put '/upmonth' => 'calendar#up_month'
+  put '/downmonth' => 'calendar#down_month'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

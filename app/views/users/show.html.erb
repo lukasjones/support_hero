@@ -2,4 +2,6 @@
 	<h1><%= @user.name %></h1>
 </header>
 
-<%= render 'partials/calendar' %>
+<div class="table-container">
+	<%= render partial: 'calendar/calendar', :locals => {month: DateTime.now.to_date.month, year: DateTime.now.to_date.year} %>
+</div>
