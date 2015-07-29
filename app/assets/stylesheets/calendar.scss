@@ -7,3 +7,24 @@
 	margin: auto;
 	text-align: center;
 }
+
+.calendar-header h3, .calendar-header a {
+	display: inline-block;
+}
+
+.calendar-header a {
+	text-decoration: none;
+	color: black;
+}
+
+.calendar-header a:hover {
+	color: grey;
+}
+
+.left {
+	float: left;
+}
+
+.right{
+	float: right;
+}
