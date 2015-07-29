@@ -1,6 +1,6 @@
 <% cal_month = get_calendar_month(month, year) %>
 <!-- set selected user to nil if none provided -->
-<% selected_user = "" if !selected_user %>
+<% selected_user = "not_a_user" if !selected_user %>
 <!-- next and previous months -->
 <div class="calendar-header">
 	<a class="cal_link left" href="/changemonth/<%= month - 1 %>">< Prev</a>
