@@ -1,6 +1,6 @@
 <% cal_month = get_calendar_month(month, year) %>
 <!-- set selected user to nil if none provided -->
-<% selected_user = "not_a_user" if !selected_user %>
+<% session[:selected_user] = "not_a_user" if !session[:selected_user] %>
 <!-- next and previous months -->
 <div class="calendar-header">
 	<a class="cal_link left" href="/changemonth/<%= month - 1 %>">< Prev</a>
@@ -25,7 +25,7 @@
 		<tr>
 
 			<% 7.times do |j| %>
-				<td <%= 'class=selected' if selected_user == cal_month[j + (i*7)][2] %>>
+				<td <%= 'class=selected' if session[:selected_user] == cal_month[j + (i*7)][2] %>>
 					<div class="num">
 						<%= cal_month[(j) + (i*7)][0] %>
 					</div>

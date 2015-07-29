@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
 	def index
 		@errors = []
+		session[:selected_user] = "not a user"
 	end
 
 	def show
 		@user = User.find(params[:id])
+		session[:selected_user] = @user.name
 	end
 
 	def find

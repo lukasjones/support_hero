@@ -2,7 +2,7 @@
 
 $(document).ready(function(){
 
-	$("body").on("click", ".cal_link", function(e){
+	$("html").on("click", ".cal_link", function(e){
 		e.preventDefault();
 		url = $(this).attr("href");
 		$.ajax({
