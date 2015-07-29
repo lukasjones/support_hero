@@ -4,9 +4,5 @@ class AddNoCanDoDayToUsers < ActiveRecord::Migration
   end
 end
 
-class AddDescriptionToItems < ActiveRecord::Migration
-  def change
-    add_column :items, :description, :string
-  end
-end
+
 
