@@ -19,6 +19,10 @@ module CalendarHelper
 
 	end
 
+	def todays_date
+		DateTime.now.to_date
+	end
+
 
 
 	def put_days_in_order(month_array)
