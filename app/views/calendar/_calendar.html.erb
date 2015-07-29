@@ -1,9 +1,13 @@
 <% cal_month = get_calendar_month(month, year) %>
+<!-- set selected user to nil if none provided -->
+<% selected_user = "" if !selected_user %>
 <!-- next and previous months -->
-<a class="cal_link" href="/changemonth/<%= month - 1 %>">down</a>
-<a class="cal_link" href="/changemonth/<%= month + 1 %>">up</a>
+<div class="calendar-header">
+	<a class="cal_link left" href="/changemonth/<%= month - 1 %>">< Prev</a>
 
-<h3 class="calendar-header"><%= "#{month_integer_to_string(month)} #{session[:year]}" %></h3>
+	<h3><%= "#{month_integer_to_string(month)} #{session[:year]}" %></h3>
+	<a class="cal_link right" href="/changemonth/<%= month + 1 %>">Next ></a>
+</div>
 <table class="calendar">
 	<tr>
 		<th>Sunday</th>
@@ -19,34 +23,18 @@
 
 	<% (cal_month.length/7 ).times do |i| %>
 		<tr>
-			<td class="Sunday">
-				<div class="num"><%= cal_month[0 + (i*7)][0] %></div>
-				<a class="name" href="/users/<%= cal_month[0 + (i*7)][1] %>"><%= cal_month[0 + (i*7)][2] %></a>
-			</td>
-			<td class="Monday">
-				<div class="num"><%= cal_month[1 + (i*7)][0] %></div>
-				<a class="name" href="/users/<%= cal_month[1 + (i*7)][1] %>"><%= cal_month[1 + (i*7)][2] %></a>
-			</td>
-			<td class="Tuesday">
-				<div class="num"><%= cal_month[2 + (i*7)][0] %></div>
-				<a class="name" href="/users/<%= cal_month[2 + (i*7)][1] %>"><%= cal_month[2 + (i*7)][2] %></a>
-			</td>
-			<td class="Wednesday">
-				<div class="num"><%= cal_month[3 + (i*7)][0] %></div>
-				<a class="name" href="/users/<%= cal_month[3 + (i*7)][1] %>"><%= cal_month[3 + (i*7)][2] %></a>
-			</td>
-			<td class="Thursday">
-				<div class="num"><%= cal_month[4 + (i*7)][0] %></div>
-				<a class="name" href="/users/<%= cal_month[4 + (i*7)][1] %>"><%= cal_month[4 + (i*7)][2] %></a>
-			</td>
-			<td class="Fay">
-				<div class="num"><%= cal_month[5 + (i*7)][0] %></div>
-				<a class="name" href="/users/<%= cal_month[5 + (i*7)][1] %>"><%= cal_month[5 + (i*7)][2] %></a>
-			</td>
-			<td class="Saturday">
-				<div class="num"><%= cal_month[6 + (i*7)][0] %></div>
-				<a class="name" href="/users/<%= cal_month[6 + (i*7)][1] %>"><%= cal_month[6 + (i*7)][2] %></a>
-			</td>
+
+			<% 7.times do |j| %>
+				<td <%= 'class=selected' if selected_user == cal_month[j + (i*7)][2] %>>
+					<div class="num">
+						<%= cal_month[(j) + (i*7)][0] %>
+					</div>
+					<a href="/users/<%= cal_month[(j) + (i*7)][1] %>" class="name">
+						<%= cal_month[(j) + (i*7)][2] %>
+					</a>
+				</td>
+			<% end %>
+
 		</tr>
 
 	<% end %>
