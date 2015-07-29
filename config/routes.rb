@@ -7,8 +7,6 @@ Rails.application.routes.draw do
 
   put '/changemonth/:num' => 'calendar#change_month'
 
-  put '/upmonth' => 'calendar#up_month'
-  put '/downmonth' => 'calendar#down_month'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
