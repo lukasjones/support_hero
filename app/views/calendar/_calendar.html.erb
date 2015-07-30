@@ -10,28 +10,35 @@
 </div>
 <table class="calendar">
 	<tr>
-		<th>Sunday</th>
-		<th>Monday</th>
-		<th>Tuesday</th>
-		<th>Wednesday</th>
-		<th>Thursday</th>
-		<th>Friday</th>
-		<th>Saturday</th>
+		<% ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"].each do |day| %>
+			<th><%= day %></th>
+		<% end %>
 	</tr>
 
 	
 
-	<% (cal_month.length/7 ).times do |i| %>
+	<% (calendar_month_user_array.length/7 ).times do |i| %>
 		<tr>
 
 			<% 7.times do |j| %>
-				<td <%= 'class=selected' if session[:selected_user] == cal_month[j + (i*7)][2] %>>
+			<% current_day =  calendar_month_user_array[j + (i*7)]%>
+				<td <%= 'class=selected' if session[:selected_user] == current_day[2] %> data-date='<%= "#{current_day[0]}-#{month}-#{session[:year]}" %>'>
 					<div class="num">
-						<%= cal_month[(j) + (i*7)][0] %>
+						<%= current_day[0] %>
 					</div>
-					<a href="/users/<%= cal_month[(j) + (i*7)][1] %>" class="name">
-						<%= cal_month[(j) + (i*7)][2] %>
+					<a href="/users/<%= current_day[1] %>" class="name">
+						<%= current_day[2] %>
 					</a>
+					 <% if session[:selected_user] == current_day[2] %>
+						 <div class="cant-do">
+
+						 	<%= form_for @user, :url => {contoller: "users", action: "update"}, method: "put" do |f| %>
+						 		<%= f.hidden_field :no_can_do_day, value: "" %>
+						 		<%= f.submit :"Mark as undoable" %>
+						 	<% end %>
+						 	
+						 </div>
+					 <% end %>
 				</td>
 			<% end %>
 
@@ -40,3 +47,5 @@
 	<% end %>
 
 </table>
+
+<div data-date="2015-02-03"></div>

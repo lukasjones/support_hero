@@ -11,7 +11,7 @@
 	<% end %>
 
 	<%= form_for :find, :url => {controller: "users", action: "find"}, method: "post" do |f| %>
-		<%= f.text_field :name, placeholder: "Enter your name to see your schedule and make changes" %>
+		<%= f.text_field :name, placeholder: "Type your name to manage your schedule" %>
 		<%= f.submit :submit %>
 	<% end %>
 </div>
