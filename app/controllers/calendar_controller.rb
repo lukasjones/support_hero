@@ -11,7 +11,7 @@ class CalendarController < ApplicationController
 			session[:year] -= 1
 		end
 		
-		render partial: 'calendar', locals: {month: num, year: session[:year]}
+		render partial: 'shared/calendar', locals: {month: num, year: session[:year]}
 	end
 
 
