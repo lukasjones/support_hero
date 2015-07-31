@@ -21,7 +21,11 @@ class UsersController < ApplicationController
 		end
 	end
 
-	
+	def update
+		user = User.find(params[:id])
+		user.update_attributes({no_can_do_day: params[:user][:no_can_do_day].to_date})
+		render json: {"message" => "YAY"}
+	end
 
 
 end

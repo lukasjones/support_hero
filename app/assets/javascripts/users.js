@@ -14,5 +14,22 @@ $(document).ready(function(){
 	})
 
 
+	$("html").on("submit", ".edit_user", function(e){
+		e.preventDefault();
+		formData = $(this).serialize();
+		url = $(this).attr("action");
+		$.ajax({
+			url: url,
+			type: "PUT",
+			data: formData
+		})
+		.success(function(response){
+			console.log(response);
+		})
+		.fail(function(){
+			console.log("update no can do day didn't work");
+		})
+	})
+
 
 })
