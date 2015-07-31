@@ -42,28 +42,36 @@ header h1 {
 }
 
 
-/*table styles*/
 
-table, tr, td, th{
-	border: 1px solid lightgrey;
+
+.user_box {
+	/*display: none;*/
+	width: 250px;
+	height: 250px;
+	background: rgba(0,0,0,0.5);
 }
 
-table {
-	border-spacing: 0;
-	width: 90%;
-	height: 500px;
-	margin: auto;
+.hidden {
+	display: none !important;
 }
 
-td {
-	vertical-align: top;
+.cant-do {
+	margin: 0;
+	padding: 0;
+	display: none;
+	max-width: 111px;
+
 }
 
-td.hover {
-	background: grey;
-	color: grey;
+.cant-do form {
+	display: inline-block;
 }
 
-.name {
-}
+
+
+
+
+
+
+
 
