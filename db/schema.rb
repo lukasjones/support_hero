@@ -24,12 +24,8 @@ ActiveRecord::Schema.define(version: 20150729015305) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.string   "name"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.date     "no_can_do_day"
+    t.string "name"
+    t.date   "no_can_do_day"
   end
 
 end

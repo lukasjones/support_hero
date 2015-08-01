@@ -20,7 +20,7 @@ starting_users = starting_line_up.uniq
 # Creating Users
 
 starting_users.each do |name|
- 	User.create(name: name, email: "#{name}@#{name}.com", password: "#{name}123")
+ 	User.create(name: name)
 end
 
 
