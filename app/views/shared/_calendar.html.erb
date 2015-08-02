@@ -1,4 +1,5 @@
-<% calendar_month_user_array = get_calendar_month(month, year) %>
+<% calendar_year_schedule = CalendarSchedule.new({year: 2015}) %>
+<% calendar_month_user_array = calendar_year_schedule.get_month(month) %>
 <!-- set selected user to nil if none provided -->
 <% session[:selected_user] = "not_a_user" if !session[:selected_user] %>
 <% @user = User.where(name: session[:selected_user])[0] unless session[:selected_user] == "not_a_user" %>
@@ -17,20 +18,20 @@
 	</tr>
 
 	
-
-	<% (calendar_month_user_array.length/7 ).times do |i| %>
+	<% number_of_weeks =  %>
+			<!-- loop through all the weeks in the month -->
+	<% (calendar_month_user_array.length/7 ).times do |week_index| %>
 		<tr>
-
-			<% 7.times do |j| %>
-			<% current_day =  calendar_month_user_array[j + (i*7)]%>
-				<td <%= 'class=selected' if session[:selected_user] == current_day[2] %> data-date='<%= "#{current_day[0]}-#{month}-#{session[:year]}" %>'>
+			<% 7.times do |day_index| %>
+			<% current_day =  calendar_month_user_array[day_index + (week_index*7)]%>
+				<td <%= 'class=selected' if session[:selected_user] == current_day.scheduled_user_name %> data-date='<%= "#{current_day.num}-#{month}-#{session[:year]}" %>'>
 					<div class="num">
-						<%= current_day[0] %>
+						<%= current_day.num %>
 					</div>
-					<a href="/users/<%= current_day[1] %>" class="name">
-						<%= current_day[2] %>
+					<a href="/users/<%= current_day.scheduled_user_id %>" class="name">
+						<%= current_day.scheduled_user_name %>
 					</a>
-					 <% if session[:selected_user] == current_day[2] %>
+					 <% if session[:selected_user] == current_day.scheduled_user_name %>
 						 <div class="cant-do">
 
 						 	<%= form_for @user, method: "put" do |f| %>
