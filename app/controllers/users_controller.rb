@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
 	def index
 		@errors = []
+		session[:year] = Date.today.year unless session[:year]
 		session[:selected_user] = "not a user"
 	end
 
 	def show
-		
 		@user = User.find(params[:id])
+		session[:year] = Date.today.year unless session[:year]
 		session[:selected_user] = @user.name
 	end
 
