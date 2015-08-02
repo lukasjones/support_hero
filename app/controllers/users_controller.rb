@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		
 		@user = User.find(params[:id])
 		session[:selected_user] = @user.name
 	end
