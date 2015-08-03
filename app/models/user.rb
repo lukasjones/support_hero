@@ -6,22 +6,14 @@ class User < ActiveRecord::Base
 
 	validate :wait_one_month_to_get_new_undoable_day
 
-
-
-	before_update :ensure_not_in_same_month
-
-
 	after_commit :reschedule, on: :update
 
-	def ensure_not_in_same_month
-		p self.no_can_do_day
-	end
-
+	
 
 	def wait_one_month_to_get_new_undoable_day
-		if self.no_can_do_day == nil
+		if self.no_can_do_day_was == nil
 			true
-		elsif self.no_can_do_day.month == Date.today.month
+		elsif self.no_can_do_day_was.month == Date.today.month
 			errors.add(:wait_a_month, "You need to wait until next month to mark another day as undoable")
 			p errors
 		end
