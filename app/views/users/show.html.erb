@@ -2,6 +2,35 @@
 	<h1><%= @user.name %></h1>
 </header>
 
+<div class="information">
+	<div class="instructions">
+		<h2>Instructions</h2>
+		<ul>
+			<li>The days you are scheduled for Support Hero are marked in <span class="yellow">yellow</span></li>
+			<li>
+				Hover over your name and click button to mark a day you can't work
+				<ul>
+					<li>you can only mark one day a month</li>
+				</ul>
+			</li>
+			<li>You may ask to switch with someone but they may decline</li>
+		</ul>
+	</div>
+
+	<div class="dashboard">
+		<h2>Dashboard</h2>
+		<ul>
+			<li>you have been asked to swap days with blah</li>
+		</ul>
+	</div>
+
+
+
+</div>
+
+
+
+
 <div class="table-container">
 	<%= render partial: 'shared/calendar', :locals => {month: DateTime.now.to_date.month, year: DateTime.now.to_date.year} %>
 </div>
