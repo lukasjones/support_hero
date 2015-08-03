@@ -7,7 +7,6 @@ class CalendarSchedule
 		@year                  = attributes[:year] || Date.today.year
 		@starting_order        = attributes[:starting_order] || User.all.map {|user| user.name} * 5
 		@year_calendar         = Array.new(12)
-
 	end
 
 	def get_month(month_num)

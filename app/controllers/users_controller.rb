@@ -13,7 +13,6 @@ class UsersController < ApplicationController
 
 	def find
 		user = User.where(name: params[:find][:name])[0]
-
 		if user
 			redirect_to user
 		else
