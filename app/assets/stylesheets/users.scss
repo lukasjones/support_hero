@@ -33,6 +33,11 @@ span.yellow {
 .information {
 	width: 90%;
 	margin: auto;
+	display: flex;
+}
+
+.eq-w {
+	flex: 1;
 }
 
 
