@@ -6,7 +6,7 @@ class DayAssignment < ActiveRecord::Base
 
 	validate :cannot_be_weekend
 	validate :check_if_california_holiday
-
+	validate :cannot_be_on_no_can_do_day
 
 
 
@@ -28,19 +28,19 @@ class DayAssignment < ActiveRecord::Base
 
   end
 
-  def swap_user(first_date, second_date)
-		first_user = get_user_from_date(first_date)
-		second_user = get_user_from_date(second_date)
-		DayAssignment.where(date: first_date).update_attributes(user: first_user)
-		DayAssignment.where(date: second_date).update_attributes(user: second_user)
-	end
 
-	private
+  def cannot_be_on_no_can_do_day
+  	no_can_do_day = self.user.no_can_do_day
+  	if self.date == no_can_do_day
+  		errors.add(:no_can_do_day_error, "can't schedule user on a day they specified as a no can do day")
+  	end
+  end
+
+  
 
 
+  
+  
 
-	def get_user_from_date(date)
-		DayAssignment.where(date: date)[0].user
-	end
 end
 
