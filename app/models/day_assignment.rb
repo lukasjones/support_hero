@@ -10,6 +10,11 @@ class DayAssignment < ActiveRecord::Base
 
 
 
+
+
+	# CUSTOM VALIDATIONS
+
+
 	def cannot_be_weekend
 		day = self.date.strftime("%A")
 		if day == "Saturday" || day == "Sunday" 
@@ -35,10 +40,6 @@ class DayAssignment < ActiveRecord::Base
   		errors.add(:no_can_do_day_error, "can't schedule user on a day they specified as a no can do day")
   	end
   end
-
-  
-
-
   
   
 
