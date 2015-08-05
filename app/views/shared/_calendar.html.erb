@@ -21,8 +21,7 @@
 	</tr>
 
 	
-	<% number_of_weeks =  %>
-			<!-- loop through all the weeks in the month -->
+	<!-- loop through all the weeks in the month -->
 	<% (calendar_month_user_array.length/7 ).times do |week_index| %>
 		<tr>
 			<% 7.times do |day_index| %>
@@ -37,10 +36,7 @@
 					  <% if session[:selected_user] == current_day.scheduled_user_name %>
 						  <div class="cant-do">
 
-						 	  <%= form_for @user, method: "put" do |f| %>
-						 		  <%= f.hidden_field :no_can_do_day, value: "" %>
-						 		  <%= f.submit :"Mark as undoable" %>
-						 	  <% end %>
+						 	  <%= render partial: 'users/no_can_do_day_form' %>
 
 						   </div>
 					  <% elsif session[:show] && current_day.scheduled_user_id %>
