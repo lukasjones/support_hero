@@ -1,0 +1,8 @@
+<div class="swap-form">
+	<%= form_for day, :url => {action: "swap_day", controller: "day_assignments"}, method: "put" do |f| %>
+		<%= f.select :swap_request , options_for_select(user.day_assignments.map{|c_day| "#{Date::MONTHNAMES[c_day.date.month]} #{c_day.date.day}, #{session[:year]}"}.reverse) %>
+		<%= f.hidden_field :day_id, :value => day.id %>
+		<%= f.submit :"ask to swap!" %>
+	<% end %>
+</div>
+
