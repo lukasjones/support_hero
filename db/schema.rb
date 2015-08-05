@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20150803195640) do
     t.date     "date"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.integer  "swap_request"
+    t.date     "swap_request"
   end
 
   create_table "users", force: :cascade do |t|

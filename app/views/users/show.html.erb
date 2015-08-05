@@ -3,7 +3,7 @@
 </header>
 
 <div class="information">
-	<div class="instructions">
+	<div class="instructions eq-w">
 		<h2>Instructions</h2>
 		<ul>
 			<li>The days you are scheduled for Support Hero are marked in <span class="yellow">yellow</span></li>
@@ -17,7 +17,28 @@
 		</ul>
 	</div>
 
-	<div class="dashboard">
+	<div class="swaps eq-w">
+		<h2>Pending Day Swaps</h2>
+		<ul>
+			<% @user.day_assignments.select{|day| day.swap_request != nil}.each do |day| %>
+				<li>
+					<%= "Will you swap your day: #{pretty_date(day.date)} for #{user_from_date(day.swap_request).name}'s #{pretty_date(day.swap_request)}" %>
+					<%= form_for day, :url => {action: "confirm_swap", controller: "day_assignments"}, method: "put" do |f| %>
+						<%= f.hidden_field :first_day_id, :value => day.id %>
+						<%= f.hidden_field :second_day_id, :value => assigned_day_from_date(day.swap_request).id %>
+						<%= f.submit :Yes %>
+					<% end %>
+					<%= form_for day, :url => {action: "reject_swap", controller: "day_assignments"}, method: "put" do |f| %>
+						<%= f.hidden_field :first_day_id, :value => day.id %>
+						<%= f.submit :No %>
+					<% end %>
+				</li>
+
+			<% end %>
+		</ul>
+	</div>
+
+	<div class="dashboard eq-w">
 		<h2>Dashboard</h2>
 		<ul>
 			<li>you have been asked to swap days with blah</li>
@@ -27,6 +48,7 @@
 
 
 </div>
+
 
 
 

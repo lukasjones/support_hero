@@ -3,9 +3,14 @@ Rails.application.routes.draw do
   root 'users#index'
   resources :users, only: [:show, :index, :update]
 
-  post 'find' => 'users#find'
 
+  post 'find' => 'users#find'
   put '/changemonth/:num' => 'calendar#change_month'
+
+
+  put 'swap_day' => 'day_assignments#swap_day'
+  put 'confirm_swap' => 'day_assignments#confirm_swap'
+  put 'reject_swap' => 'day_assignments#reject_swap'
 
 
 
