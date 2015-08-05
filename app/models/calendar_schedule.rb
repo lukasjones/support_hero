@@ -10,33 +10,23 @@ class CalendarSchedule
 	end
 
 	def get_month(month_num)
-		if @year_calendar[month_num-1]
-			month = @year_calendar[month_num-1].dup
-			add_empty_days_for_view(month)
-		else
-			set_and_schedule_month(month_num)
-			month = @year_calendar[month_num-1].dup
-			add_empty_days_for_view(month)
-		end
+		# if @year_calendar[month_num-1]
+		# 	month = @year_calendar[month_num-1].dup
+		# 	add_empty_days_for_view(month)
+		# else
+		# end
+		set_and_schedule_month(month_num)
+		month = @year_calendar[month_num-1].dup
+		add_empty_days_for_view(month)
 
 	end
 
-
-	def schedule_day(user, date)
-		DayAssignment.new(user: user, date: date)
-	end
-
-	def unschedule_day(date)
-		DayAssignment.where(date: date)[0].destroy
-	end
 
 
 	private
 
-	def update_year(date)
-		
-	end
-	
+	# maybe switch this to use starting order
+
 
 
 	def set_and_schedule_month(month_num)
