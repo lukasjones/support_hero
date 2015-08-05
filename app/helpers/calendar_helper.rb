@@ -7,6 +7,11 @@ module CalendarHelper
 	end
 
 
+	def pretty_date(date)
+		"#{Date::MONTHNAMES[date.month]} #{date.day}, #{date.year}"
+	end
+
+
 
 end
 
