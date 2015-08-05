@@ -15,6 +15,7 @@ $(document).ready(function(){
 
 	setTimeout(function(){
     $('.notice').remove();
+    $('.errors').remove();
   }, 5000);
 
 
