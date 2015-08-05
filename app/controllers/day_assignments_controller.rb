@@ -20,16 +20,17 @@ class DayAssignmentsController < ApplicationController
 		user2 = day2.user
 
 		day1.update_attributes(user: user2, swap_request: nil)
-		day2.update_attributes(user: user1)
-
-
+		day2.update_attributes(user: user1, has_requested_swap: false)
 
 		redirect_to "/users/#{session[:user_id]}"
 	end
 
 	def reject_swap
 		day1 = DayAssignment.find(params[:day_assignment][:first_day_id])
+		day2 = DayAssignment.find(params[:day_assignment][:second_day_id])
 		day1.update_attributes(swap_request: nil)
+		day2.update_attributes(has_requested_swap: false)
+
 
 		redirect_to "/users/#{session[:user_id]}"
 	end
@@ -37,4 +38,3 @@ class DayAssignmentsController < ApplicationController
 end
 
 
-{"day_assignment"=>{"first_day_id"=>"2", "second_day_id"=>"49"}, "commit"=>"Yes"}
