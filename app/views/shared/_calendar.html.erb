@@ -34,16 +34,18 @@
 					<a href="/users/<%= current_day.scheduled_user_id %>" class="name">
 						<%= current_day.scheduled_user_name %>
 					</a>
-					 <% if session[:selected_user] == current_day.scheduled_user_name %>
-						 <div class="cant-do">
+					  <% if session[:selected_user] == current_day.scheduled_user_name %>
+						  <div class="cant-do">
 
-						 	<%= form_for @user, method: "put" do |f| %>
-						 		<%= f.hidden_field :no_can_do_day, value: "" %>
-						 		<%= f.submit :"Mark as undoable" %>
-						 	<% end %>
+						 	  <%= form_for @user, method: "put" do |f| %>
+						 		  <%= f.hidden_field :no_can_do_day, value: "" %>
+						 		  <%= f.submit :"Mark as undoable" %>
+						 	  <% end %>
 
-						 </div>
-					 <% end %>
+						   </div>
+					  <% elsif session[:show] && current_day.scheduled_user_id %>
+					    <%= render partial: 'shared/swap_day_form', :locals => {day: DayAssignment.where(date: current_day.date)[0], user: User.find(session[:user_id]) } %> 
+					  <% end %>
 				</td>
 			<% end %>
 
