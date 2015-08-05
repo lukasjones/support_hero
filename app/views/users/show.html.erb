@@ -2,6 +2,20 @@
 	<h1><%= @user.name %></h1>
 </header>
 
+
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<% if flash[:errors] %>
+	<div class="errors">
+		<% flash[:errors].each do |error| %>
+			<%= error[0] %>
+		<% end %>
+	</div>
+<% end %>
+
+
 <div class="information">
 	<div class="instructions eq-w">
 		<h2>Instructions</h2>

@@ -28,8 +28,13 @@ class UsersController < ApplicationController
 	# make this work for all updates
 	def update
 		user = User.find(params[:id])
-		user.update_attributes({no_can_do_day: params[:user][:no_can_do_day].to_date})
-		render json: {"message" => "YAY"}
+		if user.update_attributes({no_can_do_day: params[:user][:no_can_do_day].to_date})
+			flash[:notice] = "successfully updated"
+		else
+			flash[:errors] = user.errors.values
+		end
+
+		redirect_to user
 	end
 
 
