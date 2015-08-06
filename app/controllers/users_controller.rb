@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 	before_filter :set_user, only: [:show, :update]
 
 	def index
-		@errors = []
 		session[:show] = false
 		session[:selected_user] = "not a user"
 	end
