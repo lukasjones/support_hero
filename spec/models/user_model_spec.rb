@@ -14,7 +14,7 @@ describe "User Model" do
 	end
 
 	
-	it "should not let a user set another no_can_do_day until a month has gone by" do
+	it "should not let a user set another no_can_do_day until the start of the next month" do
 		user = User.create(name: "Blah", no_can_do_day: '1-5-2015'.to_date)
 		expect(user.update_attributes(no_can_do_day: '1-6-2015'.to_date)).to eq(false)
 	end
