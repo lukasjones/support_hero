@@ -1,7 +1,7 @@
 
 
 
-<% calendar_year_schedule = CalendarSchedule.new({year: 2015}) %>
+<% calendar_year_schedule = CalendarSchedule.new({year: session[:year]}) %>
 <% calendar_month_user_array = calendar_year_schedule.get_month(month) %>
 <!-- set selected user to nil if none provided -->
 <% session[:selected_user] = "not_a_user" if !session[:selected_user] %>
