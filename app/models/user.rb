@@ -14,9 +14,8 @@ class User < ActiveRecord::Base
 	def wait_one_month_to_get_new_undoable_day
 		if self.no_can_do_day_was == nil
 			true
-		elsif self.no_can_do_day_was.month == Date.today.month
+		elsif self.no_can_do_day != nil && self.updated_at.month == Date.today.month
 			errors.add(:wait_a_month, "You need to wait until next month to mark another day as undoable")
-			p errors
 		end
 	end
 
