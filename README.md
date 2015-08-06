@@ -23,6 +23,9 @@ Limits:
 ## Assumptions
 
 * You are running the app in California. The apps scheduling takes into account California holidays.
+* You do not want to schedule users on the weekends.
+* Only one person is scheduled per day.
+* You must wait for someone to accept or deny a swap request before you can ask for another on the same date.
 
 
 ## Getting Started
@@ -41,10 +44,19 @@ open up your browser of choice and type http://localhost:3000/
 
 ## Class Design
 
+
 CalendarSchedule
+- Has a model of the year which it populates with instances of the Day class.
+
 Day
+- Uses the DayAssignments instances to assign users to days.
+- Can also be blank and not break the view.
+
 DayAssignment
+- Day assignment belong to a user.
+
 User
+- Users have many day assignments.
 
 
 
