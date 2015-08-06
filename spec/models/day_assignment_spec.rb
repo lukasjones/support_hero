@@ -2,7 +2,7 @@ require 'rails_helper.rb'
 
 describe "Day Assignment Model" do
 
-	let(:user) { User.create(name: "John Doe", email: "john@doe.com", password: "johndoe123") }
+	let(:user) { User.create(name: "John") }
 
 
 
@@ -16,7 +16,7 @@ describe "Day Assignment Model" do
 		expect(day_assignment.save).to eq(false)
 	end
 
-	it "should not save a day assignment if the email is missing" do
+	it "should not save a day assignment if the date is missing" do
 		day_assignment = DayAssignment.new(user: user)
 		expect(day_assignment.save).to eq(false)
 	end
