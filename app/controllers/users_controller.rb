@@ -21,9 +21,8 @@ class UsersController < ApplicationController
 		if user
 			redirect_to user
 		else
-			@todays_hero = DayAssignment.where(date: DateTime.now.to_date)[0].user
-			@errors = ["The name you typed in does not exist"]
-			render "index"
+			flash[:errors] = ["The name you typed in does not exist"]
+			redirect_to root_path
 		end
 	end
 
