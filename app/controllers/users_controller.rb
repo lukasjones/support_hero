@@ -15,7 +15,8 @@ class UsersController < ApplicationController
 	end
 
 	def find
-		user = User.where(name: params[:find][:name])[0]
+		name = params[:find][:name].downcase.capitalize
+		user = User.where(name: name)[0]
 		if user
 			redirect_to user
 		else
