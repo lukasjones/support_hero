@@ -21,9 +21,7 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to render_template("index")
 		end
 
-		it "should assign @errors to an empty array" do
-			expect(assigns(:errors)).to eq([])
-		end
+	
 
 	end
 
