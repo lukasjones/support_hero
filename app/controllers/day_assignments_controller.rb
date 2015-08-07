@@ -1,9 +1,11 @@
 class DayAssignmentsController < ApplicationController
 
 	def swap_day
+
 		day = DayAssignment.find(params[:day_assignment][:day_id])
+
 		day.update_attributes(swap_request: params[:day_assignment][:swap_request].to_date)
-		DayAssignment.where(date: params[:day_assignment][:swap_request])[0].update_attributes(has_requested_swap: true)
+		DayAssignment.where(date: params[:day_assignment][:swap_request].to_date)[0].update_attributes(has_requested_swap: true)
 		if day.errors
 			flash[:errors] = day.errors
 		end

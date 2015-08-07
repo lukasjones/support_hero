@@ -17,7 +17,6 @@ class DayAssignment < ActiveRecord::Base
 	# CUSTOM VALIDATIONS
 
 	def duplicate_request
-
 		if self.swap_request_was != nil && self.swap_request != nil
 			errors.add(:duplicate_request, "This day has already been requested")
 		end
