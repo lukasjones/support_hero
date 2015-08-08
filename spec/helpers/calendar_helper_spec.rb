@@ -11,5 +11,16 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe CalendarHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "month_integer_to_string" do
+  	it "should return the month name given a month integer" do
+  		expect(helper.month_integer_to_string(1)).to eq("January")
+  	end
+  end
+
+  describe "pretty_date" do
+  	it "should return the date in a format of 'Month_name day_number, year' " do
+  		date = "8-8-2015".to_date
+  		expect(pretty_date(date)).to eq("August 8, 2015")
+  	end
+  end
 end
