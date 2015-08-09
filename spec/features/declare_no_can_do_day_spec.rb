@@ -1,34 +1,36 @@
 require 'rails_helper'
 
-describe "The no can do day feature" do
+describe "The no can do day feature", :type => :feature, :js => true do
 	before(:each) do
-		user_array = []
-		5.times do 
-			user = User.create(name: Faker::Name.first_name)
-			user_array.push(user)
-		end
+		
+		@user1 = User.create(name: Faker::Name.first_name)
+		@user2 = User.create(name: Faker::Name.first_name)
 
-		current_day = Date.today
-		2.times do 
-			user_array.each do |user|
-				day = DayAssignment.new(user: user, date: current_day)
-				while !day.valid?
-					current_day = current_day.tomorrow
-					day = DayAssignment.new(user: user, date: current_day)
-				end
-				day.save
+		[@user1, @user2].each do |user|
+			current_day = Date.today
+			day = DayAssignment.new(user: user, date: current_day)
+			while !day.valid?
 				current_day = current_day.tomorrow
+				day = DayAssignment.new(user: user, date: current_day)
 			end
+			day.save
 		end
 
-		@user = user_array[0]
+	end
 
+	it "no can do day form should work" do
+
+		users_first_date = @user1.day_assignments.first.date
+		data_date = users_first_date.strftime("%d-%m-20%y").split("-").map {|num| num.to_i}.join("-")
+		query = "td[data-date=" + "'#{data_date}']"
+		visit "/users/#{@user1.id}"
+		selected_tds = page.all(".selected")
+		selected_tds[0].hover
+		selected_tds[0].find(".submit_undoable").click
+		expect(page.all(".selected").length).to eq(0)
 
 	end
 
-	it "should let a user mark his day as undoable" do
-		visit "/users/#{@user.id}"
-		within ""
-	end
+
 
 end
