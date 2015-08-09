@@ -19,14 +19,11 @@ describe "The no can do day feature", :type => :feature, :js => true do
 	end
 
 	it "should remove user from selected day" do
-
-		
 		visit "/users/#{@user1.id}"
 		selected_tds = page.all(".selected")
 		selected_tds[0].hover
 		selected_tds[0].find(".submit_undoable").click
 		expect(page.all(".selected").length).to eq(0)
-
 	end
 
 
