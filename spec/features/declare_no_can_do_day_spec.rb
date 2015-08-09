@@ -18,11 +18,9 @@ describe "The no can do day feature", :type => :feature, :js => true do
 
 	end
 
-	it "no can do day form should work" do
+	it "should remove user from selected day" do
 
-		users_first_date = @user1.day_assignments.first.date
-		data_date = users_first_date.strftime("%d-%m-20%y").split("-").map {|num| num.to_i}.join("-")
-		query = "td[data-date=" + "'#{data_date}']"
+		
 		visit "/users/#{@user1.id}"
 		selected_tds = page.all(".selected")
 		selected_tds[0].hover
