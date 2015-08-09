@@ -41,4 +41,11 @@ describe "The swap day feature", :type => :feature, :js => true do
 		expect(@user2.day_assignments.first.date).to eq(user1_date)
 	end
 
+	it "should not swap users when user denys request" do
+		user1_date = @user1.day_assignments.first.date
+		visit "/users/#{@user2.id}"
+		find("input[value='No']").click
+		expect(@user1.day_assignments.first.date).to eq(user1_date)
+	end
+
 end
