@@ -3,6 +3,8 @@ class Day < ActiveRecord::Base
 	belongs_to :scheduled_month
 	belongs_to :user
 	
+	
+	
 end
 
 # class Day
