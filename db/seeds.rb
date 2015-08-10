@@ -23,6 +23,12 @@ starting_users.each do |name|
  	User.create(name: name)
 end
 
+# creating scheduled months
+date = DateTime.now - 12.month
+50.times do 
+	ScheduledMonth.create(month: date.month, year: date.year)
+	date += 1.month
+end
 
 # Creating Day Assignments
 date = DateTime.now.to_date
@@ -41,4 +47,12 @@ starting_line_up.each do |name|
 		assignment.save
 	end
 end
+
+
+
+
+
+
+
+
 
