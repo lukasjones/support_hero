@@ -41,6 +41,7 @@ starting_line_up.each do |name|
 		date = date.tomorrow
 	else
 		while !assignment.valid?
+			Day.create(date: date)
 			date = date.tomorrow
 			assignment = Day.new(user: user, date: date)
 		end
