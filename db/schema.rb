@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805045345) do
+ActiveRecord::Schema.define(version: 20150810184952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 20150805045345) do
     t.datetime "updated_at",                         null: false
     t.date     "swap_request"
     t.boolean  "has_requested_swap", default: false
+  end
+
+  create_table "scheduled_months", force: :cascade do |t|
+    t.integer  "month"
+    t.integer  "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
