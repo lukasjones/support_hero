@@ -28,12 +28,12 @@ ActiveRecord::Schema.define(version: 20150810185314) do
   create_table "days", force: :cascade do |t|
     t.date     "date"
     t.integer  "user_id"
-    t.string   "scheduled_user_name"
-    t.integer  "scheduled_user_id"
+    t.string   "user_name"
     t.string   "week_day_name"
     t.integer  "day_of_month_num"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.integer  "scheduled_month_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "scheduled_months", force: :cascade do |t|
