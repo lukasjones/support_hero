@@ -1,3 +1,9 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).ready(function(){
+	$("html").on("mouseover", "td", function(){
+		$(this).find(".swap-form").show();
+	})
+
+	$("html").on("mouseout", "td", function(){
+		$(this).find(".swap-form").hide();
+	})
+})
