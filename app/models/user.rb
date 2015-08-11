@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
 	validates :name, presence: true
 
-	has_many :day_assignments
+	has_many :days
 
 	validate :wait_one_month_to_get_new_undoable_day
 
