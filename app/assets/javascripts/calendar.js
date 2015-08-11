@@ -7,7 +7,7 @@ $(document).ready(function(){
 		url = $(this).attr("href");
 		$.ajax({
 			url: url,
-			type: "PUT"
+			type: "get"
 		})
 		.success(function(response){
 			$(".table-container").html(response)
