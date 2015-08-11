@@ -1,14 +1,11 @@
-<%# calendar_year_schedule = CalendarSchedule.new({year: session[:year]}) %>
-<% calendar_month_user_array = ScheduledMonth.where(month: month, year: year)[0].days %>
-<!-- set selected user to nil if none provided -->
 <% session[:selected_user] = "not_a_user" if !session[:selected_user] %>
 <% @user = User.where(name: session[:selected_user])[0] unless session[:selected_user] == "not_a_user" %>
 <!-- next and previous months -->
 <div class="calendar-header">
-	<a class="cal_link left" href="/changemonth/<%= month - 1 %>">< Prev</a>
+	<a class="cal_link left" href="/get_prev_month">< Prev</a>
 
 	<h3><%= "#{month_integer_to_string(month)} #{session[:year]}" %></h3>
-	<a class="cal_link right" href="/changemonth/<%= month + 1 %>">Next ></a>
+	<a class="cal_link right" href="/get_next_month">Next ></a>
 </div>
 <table class="calendar">
 	<tr>
