@@ -1,0 +1,5 @@
+<%= form_for day, :url => {action: "confirm_swap", controller: "days"}, method: "put" do |f| %>
+	<%= f.hidden_field :first_day_id, :value => day.id %>
+	<%= f.hidden_field :second_day_id, :value => assigned_day_from_date(day.swap_request).id %>
+	<%= f.submit :Yes %>
+<% end %>
