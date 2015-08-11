@@ -9,10 +9,12 @@ Rails.application.routes.draw do
 
 
   get 'get_month/:month_num' => 'scheduled_months#get_month'
+  get 'get_next_month' => 'scheduled_months#get_next_month'
+  get 'get_prev_month' => 'scheduled_months#get_prev_month'
   
-  put 'swap_day' => 'day_assignments#swap_day'
-  put 'confirm_swap' => 'day_assignments#confirm_swap'
-  put 'reject_swap' => 'day_assignments#reject_swap'
+  put 'swap_day' => 'days#swap_day'
+  put 'confirm_swap' => 'days#confirm_swap'
+  put 'reject_swap' => 'days#reject_swap'
 
 
 
