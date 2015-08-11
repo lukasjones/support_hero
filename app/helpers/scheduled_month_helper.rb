@@ -1,0 +1,3 @@
+module ScheduledMonthHelper
+
+end
