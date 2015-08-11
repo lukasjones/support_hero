@@ -30,20 +30,32 @@ date = DateTime.now - 12.month
 	date += 1.month
 end
 
+# Create Days
+ScheduledMonth.all.each do |month|
+
+	current_date  = "1-#{month.month}-#{month.year}".to_date
+	until current_date.month != month.month
+		# byebug
+		Day.create(date: current_date)
+		current_date = current_date.tomorrow
+	end
+end
+
 # Creating Day Assignments
-date = DateTime.now.to_date
+date = Date.today
 starting_line_up.each do |name|
 	user = User.where(name: name)[0]
 
-	assignment = Day.new(user: user, date: date)
+	assignment = Day.where(date: date)[0]
+	assignment.update_attributes(user: user)
 	if assignment.valid?
 		assignment.save
 		date = date.tomorrow
 	else
 		while !assignment.valid?
-			Day.create(date: date)
 			date = date.tomorrow
-			assignment = Day.new(user: user, date: date)
+			assignment = Day.where(date: date)[0]
+			assignment.update_attributes(user: user)
 		end
 		assignment.save
 	end
