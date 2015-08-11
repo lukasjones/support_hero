@@ -1,5 +1,3 @@
-<% session[:selected_user] = "not_a_user" if !session[:selected_user] %>
-<% @user = User.where(name: session[:selected_user])[0] unless session[:selected_user] == "not_a_user" %>
 <!-- next and previous months -->
 <div class="calendar-header">
 	<a class="cal_link left" href="/get_prev_month">< Prev</a>
