@@ -34,7 +34,7 @@
 	<div class="swaps eq-w">
 		<h2>Pending Day Swaps</h2>
 		<ul>
-			<% @user.day_assignments.select{|day| day.swap_request != nil}.each do |day| %>
+			<% @user.days.select{|day| day.swap_request != nil}.each do |day| %>
 				<li>
 					<%= "Will you swap your day: #{pretty_date(day.date)} for #{user_from_date(day.swap_request).name}'s #{pretty_date(day.swap_request)}" %>
 					<%= render partial: "day_assignments/confirm_swap_form", locals: {day: day} %>
@@ -54,7 +54,7 @@
 
 
 <div class="table-container">
-	<%= render partial: 'shared/calendar', :locals => {month: DateTime.now.to_date.month, year: DateTime.now.to_date.year} %>
+	
 </div>
 
 
