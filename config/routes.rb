@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   put '/changemonth/:num' => 'calendar#change_month'
 
 
+  get 'get_month/:month_num' => 'scheduled_months#get_month'
+  
   put 'swap_day' => 'day_assignments#swap_day'
   put 'confirm_swap' => 'day_assignments#confirm_swap'
   put 'reject_swap' => 'day_assignments#reject_swap'
