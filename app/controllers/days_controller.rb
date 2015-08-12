@@ -21,8 +21,15 @@ class DaysController < ApplicationController
 		user1 = day1.user
 		user2 = day2.user
 
-		day1.update_attributes(user: user2, swap_request: nil)
-		day2.update_attributes(user: user1, has_requested_swap: false)
+		if day1.swap_request == day2.date && day2.swap_request == day1.date
+			day1.update_attributes(swap_request: nil, has_requested_swap: false)
+			day2.update_attributes(swap_request: nil, has_requested_swap: false)
+			day1.update_attributes(user: user2)
+			day2.update_attributes(user: user1)
+		else
+			day1.update_attributes(user: user2, swap_request: nil)
+			day2.update_attributes(user: user1, has_requested_swap: false)
+		end
 
 		redirect_to "/users/#{session[:user_id]}"
 	end
