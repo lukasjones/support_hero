@@ -19,9 +19,15 @@ class Day < ActiveRecord::Base
 	# before save
 
 	def set_user_fields
-		return if !user
-		self.user_name = user.name
-		self.user_id   = user.id
+		if !user
+			self.user_name = nil
+			self.user_id   = nil
+			self.has_requested_swap = false
+		else
+			self.user_name = user.name
+			self.user_id   = user.id
+		end
+		true
 	end
 
 	def set_date_fields
