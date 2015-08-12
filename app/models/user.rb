@@ -22,12 +22,23 @@ class User < ActiveRecord::Base
 
   protected
 
+  # take off swap request
+  # find day where swap requested and remove
+  # take off has requested swap
+  # put back on swap request
+
 	def reschedule
-		sorted_scheduled_user_count_arr = get_sorted_amount_scheduled_for_each_user
 		unschedule_day(self.no_can_do_day)
+		
+		a = Day.where(swap_request: self.no_can_do_day)[0]
+		a.update_attributes(swap_request: nil) if a
+
+		sorted_scheduled_user_count_arr = get_sorted_amount_scheduled_for_each_user
+		day = Day.where(date: self.no_can_do_day)[0]
+		swap_request = day.swap_request
+		day.update_attributes(has_requested_swap: false, swap_request: nil)
 		sorted_scheduled_user_count_arr.each do |name, number|
 			user = User.where(name: name)[0]
-			day = Day.where(date: self.no_can_do_day)[0]
 			day.update_attributes(user: user)
 			if day.valid?
 				day.save
@@ -36,6 +47,7 @@ class User < ActiveRecord::Base
 				next
 			end
 		end
+		day.update_attributes(swap_request: swap_request)
 	end
 
 
