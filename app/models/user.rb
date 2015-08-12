@@ -27,7 +27,8 @@ class User < ActiveRecord::Base
 		unschedule_day(self.no_can_do_day)
 		sorted_scheduled_user_count_arr.each do |name, number|
 			user = User.where(name: name)[0]
-			day = DayAssignment.new(user: user, date: self.no_can_do_day)
+			day = Day.where(date: self.no_can_do_day)[0]
+			day.update_attributes(user: user)
 			if day.valid?
 				day.save
 				break
@@ -39,17 +40,16 @@ class User < ActiveRecord::Base
 
 
 	def get_sorted_amount_scheduled_for_each_user
-		list_of_users_working_arr = DayAssignment.all.map{ |day| day.user.name }
-		count_hash = Hash.new(0)
-		list_of_users_working_arr.each do |user_name|
-			count_hash[user_name] += 1
+		users_day_count_hash = Hash.new
+		User.all.each do |user|
+			users_day_count_hash[user.name] = user.days.length
 		end
-		count_hash.sort_by{ |k,v| v }
+		users_day_count_hash.sort_by{ |k,v| v }
 	end
 
 
 	def unschedule_day(date)
-		DayAssignment.where(date: date)[0].destroy
+		Day.where(date: date)[0].update_attributes(user: nil);
 	end
 
 

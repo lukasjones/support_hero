@@ -37,8 +37,8 @@
 			<% @user.days.select{|day| day.swap_request != nil}.each do |day| %>
 				<li>
 					<%= "Will you swap your day: #{pretty_date(day.date)} for #{user_from_date(day.swap_request).name}'s #{pretty_date(day.swap_request)}" %>
-					<%= render partial: "day_assignments/confirm_swap_form", locals: {day: day} %>
-					<%= render partial: "day_assignments/reject_swap_form", locals: {day: day} %>
+					<%= render partial: "days/confirm_swap_form", locals: {day: day} %>
+					<%= render partial: "days/reject_swap_form", locals: {day: day} %>
 				</li>
 
 			<% end %>
