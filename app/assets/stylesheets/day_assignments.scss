@@ -5,3 +5,15 @@
 .swap-form {
 	display: none;
 }
+
+.swap-form form input {
+	display: block;
+}
+
+.swap-form form input[type="submit"] {
+	padding: 5px;
+	width: 150px;
+}
+
+
+ 

@@ -10,14 +10,14 @@ html, body, header, h1, h2, h3, h4, h5, h6, input {
 header {
 	width: 100%;
 	height: 100px;
-	background: lightgrey;
+	background: rgb(123,165,199);
 	text-align: center;
 
 }
 
 header h1 {
 	padding-top: 24px;
-	color: black;
+	color: rgb(252,247,246);
 }
 
 
@@ -105,6 +105,8 @@ display: none;
 .cant-do form {
 	display: inline-block;
 }
+
+
 
 
 
