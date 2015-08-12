@@ -2,16 +2,20 @@ require 'rails_helper'
 
 describe "The no can do day feature", :type => :feature, :js => true do
 	before(:each) do
+
+		today = Date.today
 		
+		ScheduledMonth.create(month: today.month, year: today.year)
+
 		@user1 = User.create(name: Faker::Name.first_name)
 		@user2 = User.create(name: Faker::Name.first_name)
 
 		[@user1, @user2].each do |user|
 			current_day = Date.today
-			day = DayAssignment.new(user: user, date: current_day)
+			day = Day.new(user: user, date: current_day)
 			while !day.valid?
 				current_day = current_day.tomorrow
-				day = DayAssignment.new(user: user, date: current_day)
+				day = Day.new(user: user, date: current_day)
 			end
 			day.save
 		end
