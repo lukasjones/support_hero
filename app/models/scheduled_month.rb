@@ -49,9 +49,7 @@ class ScheduledMonth < ActiveRecord::Base
 		scheduled_month = ScheduledMonth.create(month: month, year: year)
 		current_date = "1-#{month}-#{year}".to_date
 		until current_date.month != month
-			if Day.where(date: current_date)[0]
-				Day.where(date: current_date)[0].update_attributes(scheduled_month: scheduled_month)
-			else
+			if !Day.where(date: current_date)[0]
 				Day.create(date: current_date)
 			end
 			current_date = current_date.tomorrow

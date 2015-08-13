@@ -29,7 +29,7 @@
 						  <div class="cant-do">
 
 						 	  <%= render partial: 'users/no_can_do_day_form', locals: {user: User.where(name: session[:selected_user])[0]} %>
-
+								
 						   </div>
 					  <% elsif session[:show] && current_day.user_id %>
 					    <%= render partial: 'shared/swap_day_form', :locals => {day: Day.where(date: current_day.date)[0], user: User.find(session[:user_id]) } %> 
