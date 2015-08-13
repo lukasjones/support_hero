@@ -24,8 +24,8 @@ starting_users.each do |name|
 end
 
 # creating scheduled months
-date = DateTime.now - 12.month
-50.times do 
+date = DateTime.now - 3.month
+6.times do 
 	ScheduledMonth.create(month: date.month, year: date.year)
 	date += 1.month
 end
