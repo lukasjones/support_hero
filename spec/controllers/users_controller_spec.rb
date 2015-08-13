@@ -78,6 +78,25 @@ RSpec.describe UsersController, type: :controller do
 
 	end
 
+	describe "PUT #update" do
+
+		it "should update a user's no_can_do_day to the date specified" do
+			user = User.create(name: "John")
+
+			params={}
+			params[:id]   = user.id
+			params[:user] = {}
+			params[:user][:no_can_do_day] = Date.today
+
+			put :update, params
+
+			expect(user.reload.no_can_do_day).to eq(Date.today)
+
+		end
+
+
+	end
+
 
 
 end
