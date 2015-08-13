@@ -24,31 +24,33 @@ describe "The swap day feature", :type => :feature, :js => true do
 		query = "td[data-date=" + "'#{data_date}']"
 
 		visit "/users/#{@user1.id}"
-		sleep(1.5)
+		sleep(2)
 		find(query).hover
 		option = first('#day_swap_request option').text
 		select option, from: 'day_swap_request'
 		find(query).find("input[type='submit']").click
 	end
 
-	it "should ask to swap users when you submit form" do
-		expect(@user2.days.first.swap_request).to eq(@user1.days.first.date)
+	
+
+	it "should not swap users when user denys request" do
+		user1_date = @user1.days.first.date
+		visit "/users/#{@user2.id}"
+		sleep(1)
+		find("input[value='No']").click
+		sleep(0.5)
+		expect(@user1.days.first.date).to eq(user1_date)
 	end
 
 	it "should swap users when one user confirms" do
 		user1_date = @user1.days.first.date
 
 		visit "/users/#{@user2.id}"
+		sleep(1)
 		find("input[value='Yes']").click
+		sleep(0.5)
 		expect(@user2.days.first.date).to eq(user1_date)
 	end
 
-	it "should not swap users when user denys request" do
-		user1_date = @user1.days.first.date
-		visit "/users/#{@user2.id}"
-		sleep(1.5)
-		find("input[value='No']").click
-		expect(@user1.days.first.date).to eq(user1_date)
-	end
 
 end
