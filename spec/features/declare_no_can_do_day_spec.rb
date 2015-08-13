@@ -5,12 +5,13 @@ describe "The no can do day feature", :type => :feature, :js => true do
 
 		today = Date.today
 		
-
 		@user1 = User.create(name: Faker::Name.first_name)
 		@user2 = User.create(name: Faker::Name.first_name)
 
-		@day1  = Day.create(date: Date.today, user: @user1)
-		@day1  = Day.create(date: Date.tomorrow, user: @user2)
+		Day.create(date: Date.today, user: @user1)
+		Day.create(date: Date.tomorrow, user: @user2)
+		
+		ScheduledMonth.create_month_and_days(today.month, today.year)
 	end
 
 	it "should remove user from selected day" do

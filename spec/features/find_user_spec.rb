@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-describe "The Find Form", :type => :feature do
+describe "The Find Form", :type => :feature, :js => true do
 
   before :each do
     @user = User.create(name: "Rah")
-    @day = DayAssignment.create(user: @user, date: Date.today)
+    @day = Day.create(user: @user, date: Date.today)
   end
 
   it "redirects to show page on find form submit with correct credentials" do
