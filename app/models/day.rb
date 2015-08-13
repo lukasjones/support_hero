@@ -6,7 +6,7 @@ class Day < ActiveRecord::Base
 	before_save :set_user_fields
 	before_save :set_date_fields
 	
-	validates  :date, uniqueness: true
+	validates  :date, presence: true, uniqueness: true
 
 	validate :cannot_be_weekend
 	validate :cannot_be_california_holiday

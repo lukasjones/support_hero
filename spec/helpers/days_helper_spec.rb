@@ -11,5 +11,23 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe DaysHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+	before(:each) do
+		@user = User.create(name: "Rah")
+		@date = "10-8-2015".to_date
+		@day  = Day.create(user: @user, date: @date)
+	end
+
+	describe "user_from_date" do
+		it "should return the user from a specific date" do
+			expect(helper.user_from_date(@date)).to eq(@user)
+		end
+	end
+
+	describe "assigned_day_from_date" do
+		it "should return the assigned day from a date" do
+			expect(helper.assigned_day_from_date(@date)).to eq(@day)
+		end
+	end
+  
 end

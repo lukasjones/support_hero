@@ -22,7 +22,7 @@ RSpec.describe UsersHelper, type: :helper do
 		it "should give you the current_user when it's not a weekend or California Holiday" do
 			user = User.create(name: "John")
 			working_date = "8-10-2015".to_date
-			DayAssignment.create(user: user, date: working_date)
+			Day.create(user: user, date: working_date)
 			phrase = helper.get_header_phrase(working_date)
 			expect(phrase).to eq("Today's Support Hero is #{user.name}")
 		end
