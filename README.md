@@ -58,7 +58,7 @@ User
 - Users have many day assignments.
  
 
-![Schema](./mockup_an_schema/support_hero_schema.png)
+![Schema](./mockup_and_schema/support_hero_schema.png)
 
 
 
