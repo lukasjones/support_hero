@@ -1,6 +1,6 @@
 # Support Hero  
 
-##Description
+## Description
 
 This is a scheduling application that stores and displays the on-duty days for a team.  Every day, one person is given the duty of Support Hero.  
 
@@ -16,7 +16,7 @@ Users may also choose to swap days.  This process has two steps:
 
 Limits:
 
-* The user cannot ask to swap the same day to multiple people. for example: if I asked to swap January 1st, 2015 with Mark and (before mark could confirm or deny my request) I asked to swap January 1st, 2015 with Amy, the system would give the user an error telling them it's not possible.
+* The user cannot ask to swap the same day with multiple people. for example: if I asked to swap January 1st, 2015 with Mark and (before mark could confirm or deny my request) I asked to swap January 1st, 2015 with Amy, the system would give the user an error telling them it's not possible.
 * The user will be given an error if they ask to swap a day that someone else has asked (but not been answered).
 
 
@@ -45,18 +45,20 @@ open up your browser of choice and type http://localhost:3000/
 ## Class Design
 
 
-CalendarSchedule
-- Has a model of the year which it populates with instances of the Day class.
+ScheduledMonth
+- has_many days
 
 Day
 - Uses the DayAssignments instances to assign users to days.
 - Can also be blank and not break the view.
-
-DayAssignment
 - Day assignment belong to a user.
+
 
 User
 - Users have many day assignments.
+ 
+
+![Schema](./mockup_an_schema)
 
 
 
