@@ -1,10 +1,23 @@
 class ScheduledMonthsController < ApplicationController
 
+	# PSEUDO CODE
+	#   if scheduled_month does not exist
+	#     create it and create it's days
+	#   else
+	#     get_display_month
+
+
 	def get_month
-		month_num                 = params[:month_num].to_i
-		scheduled_month           = ScheduledMonth.where(month: month_num, year: session[:year])[0]
-		session[:month_num]       = month_num
+		month_num       = params[:month_num].to_i
+		scheduled_month = ScheduledMonth.where(month: month_num, year: session[:year])[0]
+
+		if scheduled_month == nil
+			ScheduledMonth.create_month_and_days(month_num, session[:year])
+			scheduled_month = ScheduledMonth.where(month: month_num, year: session[:year])[0]			
+		end
+
 		calendar_month_user_array = scheduled_month.get_display_month(month_num,session[:year])
+		session[:month_num]       = month_num
 
 		render partial: 'shared/calendar', locals: {month: month_num, year: session[:year], calendar_month_user_array: calendar_month_user_array}
 	end
@@ -25,6 +38,8 @@ class ScheduledMonthsController < ApplicationController
 	end
 
 
+
+	
 
 
 

@@ -17,14 +17,48 @@ class ScheduledMonth < ActiveRecord::Base
 
 	def prev_month
 		date = "1-#{self.month}-#{self.year}".to_date - 1.month
-		ScheduledMonth.where(month: date.month, year: date.year)[0]
+		month = date.month
+		year = date.year
+		scheduled_month = ScheduledMonth.where(month: month, year: year)[0]
+		if scheduled_month == nil
+			ScheduledMonth.create_month_and_days(month, year)
+			scheduled_month = ScheduledMonth.where(month: month, year: year)[0]
+		end
+
+		scheduled_month
 	end
 
 	def next_month
 		date = "1-#{self.month}-#{self.year}".to_date + 1.month
-		ScheduledMonth.where(month: date.month, year: date.year)[0]
+		month = date.month
+		year = date.year
+		scheduled_month = ScheduledMonth.where(month: month, year: year)[0]
+		if scheduled_month == nil
+			ScheduledMonth.create_month_and_days(month, year)
+			scheduled_month = ScheduledMonth.where(month: month, year: year)[0]
+		end
+
+		scheduled_month
 	end
 	
+	def self.create_month_and_days(month, year)
+		today = Date.today
+		month = today.month unless month != nil
+		year  = today.year unless year != nil
+
+		scheduled_month = ScheduledMonth.create(month: month, year: year)
+		current_date = "1-#{month}-#{year}".to_date
+		until current_date.month != month
+			if Day.where(date: current_date)[0]
+				Day.where(date: current_date)[0].update_attributes(scheduled_month: scheduled_month)
+			else
+				Day.create(date: current_date)
+			end
+			current_date = current_date.tomorrow
+		end
+
+	end
+
 	private
 
 	def get_last_week_of_prev_month
