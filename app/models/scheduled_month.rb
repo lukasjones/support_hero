@@ -6,7 +6,7 @@ class ScheduledMonth < ActiveRecord::Base
 
 
 
-	# model mehtods
+	# model methods
 
 	def get_display_month(month, year)
 		calendar_month_user_array = ScheduledMonth.where(month: month, year: year)[0].days.order(:date)
