@@ -5,25 +5,17 @@ describe "The no can do day feature", :type => :feature, :js => true do
 
 		today = Date.today
 		
-		ScheduledMonth.create(month: today.month, year: today.year)
 
 		@user1 = User.create(name: Faker::Name.first_name)
 		@user2 = User.create(name: Faker::Name.first_name)
 
-		[@user1, @user2].each do |user|
-			current_day = Date.today
-			day = Day.new(user: user, date: current_day)
-			while !day.valid?
-				current_day = current_day.tomorrow
-				day = Day.new(user: user, date: current_day)
-			end
-			day.save
-		end
-
+		@day1  = Day.create(date: Date.today, user: @user1)
+		@day1  = Day.create(date: Date.tomorrow, user: @user2)
 	end
 
 	it "should remove user from selected day" do
 		visit "/users/#{@user1.id}"
+		sleep(2)
 		selected_tds = page.all(".selected")
 		selected_tds[0].hover
 		selected_tds[0].find(".submit_undoable").click
