@@ -24,4 +24,13 @@ $(document).ready(function(){
   }, 5000);
 
 
+	$(".toggle").hide();
+
+	$(".instruction").on("click", function(e){
+		e.preventDefault();
+		console.log("got here")
+		$(this).parent().find(".toggle").toggle();
+	})
+
+
 })
