@@ -2,14 +2,20 @@
 
 ## Description
 
-This is a scheduling application that stores and displays the on-duty days for a team.  Every day, one person is given the duty of Support Hero.  
+This is a scheduling application that stores and displays the on-duty days for a team.  Every day, one person is given the duty of Support Hero.  This application allows user to check and manage their schedule.
+
+
+## How to use
 
 The index page shows the name of support hero of the day and a calendar month with the users that are assigned to each day.  
 
-The users may mark one day a month as undoable.  If they do this, the user that has been assigned the least number of days (that hasn't marked the day as undoable) so far will be scheduled to work that day.
+To navigate to the user profile page you can either type your first name into the find form or you can find your name(which is linked to your profile) in the calendar and click on it.
+
+Once on the show page, users can see and mangae their profile.
+
+Users may mark one day a month as undoable.  If they do this, the user that has been assigned the least number of days (that hasn't marked the day as undoable) so far will be scheduled to work that day.
 
 Users may also choose to swap days.  This process has two steps:  
-(from the user's profile page)
 
 1. The user asks another user to swap a day
 2. The user being asked can then accept or deny the request.
@@ -25,12 +31,12 @@ Limits:
 * You are running the app in California. The apps scheduling takes into account California holidays.
 * You do not want to schedule users on the weekends.
 * Only one person is scheduled per day.
-* You must wait for someone to accept or deny a swap request before you can ask for another on the same date.
+* You must wait for someone to accept or deny a swap request before you can ask for another on the same date. This is to prevent users from asking everyone on the team to swap at once.
 
 
 ## Getting Started
 
-(assuming you have Ruby > 2.0.0 , Git and Rails > 4.0.0 installed)
+(assuming you have Ruby >= 2.0.0 , Git and Rails > 4.0.0 installed)
 
 1. git clone https://github.com/lukasjones/support_hero.git
 2. cd support_hero
@@ -42,11 +48,19 @@ Limits:
 open up your browser of choice and type http://localhost:3000/
 
 
+## Schema Design
+
+![Schema](./mockup_and_schema/support_hero_schema.png)
+
+
 ## Class Design
 
 
 ScheduledMonth
-- has_many days
+- create_month_and_days 
+
+
+- 
 
 Day
 - Uses the DayAssignments instances to assign users to days.
@@ -58,7 +72,7 @@ User
 - Users have many day assignments.
  
 
-![Schema](./mockup_and_schema/support_hero_schema.png)
+
 
 
 
