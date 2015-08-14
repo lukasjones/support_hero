@@ -78,7 +78,7 @@ class Day < ActiveRecord::Base
 			day_requesting = Day.where(date: date_requesting_to_swap)[0]
 			# byebug
 			if day_requesting.has_requested_swap_was != false 
-				errors.add(:cannot_request_same_day, "You have already asked to swap this day.  You must wait until they confirm or deny your request.")
+				errors.add(:cannot_request_same_day, "You have already asked to swap this day. ")
 			end
 		end
 

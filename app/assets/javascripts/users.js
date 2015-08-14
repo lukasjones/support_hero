@@ -13,9 +13,14 @@ $(document).ready(function(){
 		$(this).find(".cant-do").hide();
 	})
 
+	$('.errors').hide();
+	$('.notice').hide();
+	$('.errors').slideDown();
+	$('.notice').slideDown();
+
 	setTimeout(function(){
-    $('.notice').remove();
-    $('.errors').remove();
+    $('.notice').slideUp();
+    $('.errors').slideUp();
   }, 5000);
 
 

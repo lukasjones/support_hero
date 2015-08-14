@@ -6,8 +6,10 @@ class DaysController < ApplicationController
 
 		day.update_attributes(swap_request: params[:day][:swap_request].to_date)
 		Day.where(date: params[:day][:swap_request].to_date)[0].update_attributes(has_requested_swap: true)
-		if day.errors
-			flash[:errors] = day.errors
+		if !day.errors.empty?
+			flash[:errors] = day.errors.values
+		else
+			flash[:notice] = "Swap requested successfully"
 		end
 		redirect_to "/users/#{session[:user_id]}"
 	end

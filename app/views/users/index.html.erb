@@ -3,15 +3,15 @@
 		<%= get_header_phrase(Date.today) %>
 	</h1>
 </header>
-<div class="errors">
-	<% if flash[:errors] %>
-		<ul>
-			<% flash[:errors].each do |error| %>
-				<li><%= error %></li>
-			<% end %>
-		</ul>
-	<% end %>
-</div>
+
+
+<% if flash[:errors] %>
+	<div class="errors">
+		<% flash[:errors].each do |error| %>
+			<p><%= error %></p>
+		<% end %>
+	</div>
+<% end %>
 
 <div class="form-container">
 	
