@@ -60,20 +60,18 @@ class ScheduledMonth < ActiveRecord::Base
 	private
 
 	def get_last_week_of_prev_month
-		
 		last_week = prev_month.days.order(:date).last(7)
-		output = []
-		last_week.reverse.each do |day|
-			break if day.week_day_name === "Saturday"
-			output.unshift(day)
-		end
-		output
+		get_week(last_week)
 	end
 
 	def get_first_week_of_next_month
 		first_week = next_month.days.order(:date).first(7)
+		get_week(first_week)
+	end
+
+	def get_week(week)
 		output = []
-		first_week.each do |day|
+		week.each do |day|
 			break if day.week_day_name === "Sunday"
 			output.push(day)
 		end
