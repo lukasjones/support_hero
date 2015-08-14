@@ -47,6 +47,20 @@ Limits:
 
 open up your browser of choice and type http://localhost:3000/
 
+## Deploy online (with Heroku)
+here is a [link](http://support-heroes.herokuapp.com) to an already deployed version
+
+
+(I am assuming you have an account with heroku and have the heroku CLI tools installed)
+
+1. follow steps in "Getting Started" section.
+
+- (the next steps are in Terminal)
+
+2.  heroku create
+3. git push heroku master (this step takes a while)
+4. heroku run rake db:create db:migrate db:seed
+5. heroku open (this will open up the website in your preferred web browser)
 
 ## Schema Design
 
@@ -57,42 +71,17 @@ open up your browser of choice and type http://localhost:3000/
 
 
 ScheduledMonth
-- create_month_and_days 
-
-
+- month and year must be unique
+- has method to create month and all the days in the month 
 - 
 
+
 Day
-- Uses the DayAssignments instances to assign users to days.
-- Can also be blank and not break the view.
-- Day assignment belong to a user.
+- belongs to a user
+- belongs to a scheduled month
 
 
 User
-- Users have many day assignments.
+- users have many days
  
 
-
-
-
-
-
-
-
-Features:
-* Display today's Support Hero
-* Display single user's schedule 
-* Display full schedule for Support Heros
-* Users can mark one day as undoable
-  * System should reschedule
-  * Take into account weekends and holidays
-* Users should be able to swap days
-
-
-
-
-- Requirements for service (what does the service do)
-- Limitations and Assumptions (Is only valid for California)
-- Design (How is the class laid out, flow between classes, can use class and sequence diagrams)
-- How to deploy the software as a service
-- How to use
