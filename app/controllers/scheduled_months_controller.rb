@@ -1,13 +1,5 @@
 class ScheduledMonthsController < ApplicationController
 
-	# PSEUDO CODE
-	#   if scheduled_month does not exist
-	#     create it and create it's days
-	#   else
-	#     get_display_month
-
-
-
 	def get_month
 		month_num       = params[:month_num].to_i || Date.today.month
 		scheduled_month = ScheduledMonth.where(month: month_num, year: session[:year])[0]
@@ -42,13 +34,5 @@ class ScheduledMonthsController < ApplicationController
 		session[:month_num] = Date.today.month unless session[:month_num]
 		render json: {month_num: session[:month_num]}
 	end
-
-
-	
-
-
-
-
-
 
 end
