@@ -7,8 +7,9 @@ class ScheduledMonthsController < ApplicationController
 	#     get_display_month
 
 
+
 	def get_month
-		month_num       = params[:month_num].to_i
+		month_num       = params[:month_num].to_i || Date.today.month
 		scheduled_month = ScheduledMonth.where(month: month_num, year: session[:year])[0]
 
 		if scheduled_month == nil
@@ -37,6 +38,10 @@ class ScheduledMonthsController < ApplicationController
 		redirect_to "/get_month/#{prev_scheduled_month.month}"
 	end
 
+	def get_month_num
+		session[:month_num] = Date.today.month unless session[:month_num]
+		render json: {month_num: session[:month_num]}
+	end
 
 
 	

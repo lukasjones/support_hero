@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'get_month/:month_num' => 'scheduled_months#get_month'
   get 'get_next_month' => 'scheduled_months#get_next_month'
   get 'get_prev_month' => 'scheduled_months#get_prev_month'
+  get 'get_month_num' => 'scheduled_months#get_month_num'
   
   put 'swap_day' => 'days#swap_day'
   put 'confirm_swap' => 'days#confirm_swap'
