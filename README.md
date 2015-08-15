@@ -73,7 +73,6 @@ here is a [link](http://support-heroes.herokuapp.com) to an already deployed ver
 ScheduledMonth
 - month and year must be unique
 - has method to create month and all the days in the month 
-- 
 
 
 Day
@@ -83,5 +82,15 @@ Day
 
 User
 - users have many days
+- users can mark a day as undoable
+- through days class a user can ask another user to swap one of their own days
+
+
+## UI Design
+
+Mockups
+
+![Schema](./mockup_and_schema/support_hero_home_page.png)
+![Schema](./mockup_and_schema/support_hero_user_page.png)
  
 
