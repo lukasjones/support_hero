@@ -18,7 +18,7 @@
 		<tr>
 			<% 7.times do |day_index| %>
 			<% current_day =  calendar_month_user_array[day_index + (week_index*7)]%>
-				<td <%= 'class=selected' if session[:selected_user] == current_day.user_name %> data-date='<%= "#{current_day.day_of_month_num}-#{month}-#{session[:year]}" %>'>
+				<td <%= set_selected(current_day) %> data-date='<%= ugly_date(current_day) %>'>
 					<div class="num">
 						<%= current_day.day_of_month_num %>
 					</div>
