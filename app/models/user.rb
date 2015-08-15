@@ -30,24 +30,37 @@ class User < ActiveRecord::Base
 	def reschedule
 		unschedule_day(self.no_can_do_day)
 		
-		a = Day.where(swap_request: self.no_can_do_day)[0]
-		a.update_attributes(swap_request: nil) if a
+		# no can do day => 8-28-2015
 
+
+		# remove any swap request undoable day has made 
+		swap_day = Day.where(swap_request: self.no_can_do_day)[0]
+		swap_day.update_attributes(swap_request: nil) if swap_day
+
+		# remove swap_request on day being rescheduled and just remove has_requested_swap alltogether from undoable day
+		undoable_day = Day.where(date: self.no_can_do_day)[0]
+		swap_request = undoable_day.swap_request.dup
+
+		# remove has_requested_swap from day requesting to swap with undoable day (put it back on in the end)
+		day_requesting_swap = Day.where(date: swap_request)[0]
+		day_requesting_swap.update_attributes(has_requested_swap: false)
+
+		undoable_day.update_attributes(has_requested_swap: false, swap_request: nil)
+		
+		# get user who is scheduled least and assign them the day
 		sorted_scheduled_user_count_arr = get_sorted_amount_scheduled_for_each_user
-		day = Day.where(date: self.no_can_do_day)[0]
-		swap_request = day.swap_request
-		day.update_attributes(has_requested_swap: false, swap_request: nil)
 		sorted_scheduled_user_count_arr.each do |name, number|
 			user = User.where(name: name)[0]
-			day.update_attributes(user: user)
-			if day.valid?
-				day.save
+			undoable_day.update_attributes(user: user)
+			if undoable_day.valid?
+				undoable_day.save
 				break
-			else
-				next
 			end
 		end
-		day.update_attributes(swap_request: swap_request)
+
+		# reset requests 
+		undoable_day.update_attributes(swap_request: swap_request)
+		day_requesting_swap.update_attributes(has_requested_swap: true)
 	end
 
 

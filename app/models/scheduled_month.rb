@@ -4,8 +4,6 @@ class ScheduledMonth < ActiveRecord::Base
 	validates_uniqueness_of :month, :scope => :year
 
 
-
-
 	# model methods
 
 	def get_display_month(month, year)

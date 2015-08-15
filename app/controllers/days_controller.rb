@@ -3,9 +3,9 @@ class DaysController < ApplicationController
 	def swap_day
 
 		day = Day.find(params[:day][:day_id])
-
 		day.update_attributes(swap_request: params[:day][:swap_request].to_date)
 		Day.where(date: params[:day][:swap_request].to_date)[0].update_attributes(has_requested_swap: true)
+
 		if !day.errors.empty?
 			flash[:errors] = day.errors.values
 		else
@@ -23,6 +23,7 @@ class DaysController < ApplicationController
 		user1 = day1.user
 		user2 = day2.user
 
+		# if both days are requesting to swap with eachother, update them both and remove both swap_requests
 		if day1.swap_request == day2.date && day2.swap_request == day1.date
 			day1.update_attributes(swap_request: nil, has_requested_swap: false, user: user2)
 			day2.update_attributes(swap_request: nil, has_requested_swap: false, user: user1)

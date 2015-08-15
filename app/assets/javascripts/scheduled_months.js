@@ -2,13 +2,13 @@ $(document).ready(function(){
 
 
 	$(".users").ready(function(){
-		// get the current session's month number to user for next ajax call
+		// Ajax call gets the current session's month number for get month ajax call
 		$.ajax({
 			url: "/get_month_num", 
 			type: "get"
 		})
 		.done(function(response){
-			// get the current month and display on page
+			// ajax call gets the current month and displays it on page
 			month = response["month_num"]
 			console.log(response)
 			url   = "/get_month/" + month
