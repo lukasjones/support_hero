@@ -2,7 +2,7 @@
 	<%= form_for day, :url => {action: "swap_day", controller: "days"}, method: "put" do |f| %>
 		<%= f.select :swap_request , options_for_select(user.days.order(:date).reverse.map{|c_day| "#{pretty_date(c_day.date)}"}.reverse) %>
 		<%= f.hidden_field :day_id, :value => day.id %>
-		<%= f.submit :"ask to swap!" %>
+		<%= f.submit :"Ask to swap!" %>
 	<% end %>
 </div>
 
