@@ -1,3 +1,71 @@
-// Place all the styles related to the scheduled_months controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.calendar-header {
+	width: 90%;
+	margin: auto;
+	text-align: center;
+}
+
+.calendar-header h3, .calendar-header a {
+	display: inline-block;
+}
+
+.calendar-header a {
+	text-decoration: none;
+	color: black;
+}
+
+.calendar-header a:hover {
+	color: grey;
+}
+
+.left {
+	float: left;
+}
+
+.right{
+	float: right;
+}
+
+/*table styles*/
+
+table, tr, td, th{
+	border: 1px solid lightgrey;
+}
+
+table {
+	border-spacing: 0;
+	width: 90%;
+	height: 500px;
+	margin: auto;
+}
+
+td {
+	vertical-align: top;
+	padding: 0;
+	margin: 0;
+	width: 200px;
+	height: 80px;
+}
+
+td.hover {
+	background: grey;
+	color: grey;
+}
+
+td:nth-child(1), th:nth-child(1), td:nth-child(7), th:nth-child(7) {  
+	background: rgba(119,113,111,0.1);
+	width: 100px;
+  /* your stuff here */
+}
+
+
+
+td.selected {
+	background: rgba(240,106,75,1);
+}
+
+.faded {
+	background: rgba(255,237,167, 0.3) !important;
+}
+
+
+
