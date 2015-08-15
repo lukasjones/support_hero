@@ -11,7 +11,7 @@ The index page shows the name of support hero of the day and a calendar month wi
 
 To navigate to the user profile page you can either type your first name into the find form or you can find your name(which is linked to your profile) in the calendar and click on it.
 
-Once on the show page, users can see and mangae their profile.
+Once on the show page, users can see and manage their profile.
 
 Users may mark one day a month as undoable.  If they do this, the user that has been assigned the least number of days (that hasn't marked the day as undoable) so far will be scheduled to work that day.
 
