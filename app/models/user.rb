@@ -39,7 +39,10 @@ class User < ActiveRecord::Base
 
 		# remove swap_request on day being rescheduled and just remove has_requested_swap alltogether from undoable day
 		undoable_day = Day.where(date: self.no_can_do_day)[0]
-		swap_request = undoable_day.swap_request.dup
+		swap_request = undoable_day.swap_request
+
+		# set swap if swap_request isn't nil
+		swap_request = swap_request.dup if swap_request
 
 		# remove has_requested_swap from day requesting to swap with undoable day (put it back on in the end)
 		day_requesting_swap = Day.where(date: swap_request)[0]
