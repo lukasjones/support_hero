@@ -22,16 +22,10 @@ class User < ActiveRecord::Base
 
   protected
 
-  # take off swap request
-  # find day where swap requested and remove
-  # take off has requested swap
-  # put back on swap request
 
 	def reschedule
 		unschedule_day(self.no_can_do_day)
 		
-		# no can do day => 8-28-2015
-
 
 		# remove any swap request undoable day has made 
 		swap_day = Day.where(swap_request: self.no_can_do_day)[0]
@@ -46,7 +40,7 @@ class User < ActiveRecord::Base
 
 		# remove has_requested_swap from day requesting to swap with undoable day (put it back on in the end)
 		day_requesting_swap = Day.where(date: swap_request)[0]
-		day_requesting_swap.update_attributes(has_requested_swap: false)
+		day_requesting_swap.update_attributes(has_requested_swap: false) if day_requesting_swap
 
 		undoable_day.update_attributes(has_requested_swap: false, swap_request: nil)
 		
@@ -63,7 +57,7 @@ class User < ActiveRecord::Base
 
 		# reset requests 
 		undoable_day.update_attributes(swap_request: swap_request)
-		day_requesting_swap.update_attributes(has_requested_swap: true)
+		day_requesting_swap.update_attributes(has_requested_swap: true) if day_requesting_swap
 	end
 
 
