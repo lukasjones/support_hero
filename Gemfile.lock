@@ -208,3 +208,9 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
+
+RUBY VERSION
+   ruby 2.0.0p195
+
+BUNDLED WITH
+   1.15.0
