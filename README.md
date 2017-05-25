@@ -36,7 +36,8 @@ Limits:
 
 ## Getting Started
 
-(assuming you have Ruby >= 2.0.0 , Git and Rails > 4.0.0 installed)
+Prerequisites:
+Must have postgres, rails and ruby installed
 
 1. git clone https://github.com/lukasjones/support_hero.git
 2. cd support_hero
@@ -51,13 +52,13 @@ open up your browser of choice and type http://localhost:3000/
 here is a [link](http://support-heroes.herokuapp.com) to an already deployed version
 
 
-(I am assuming you have an account with heroku and have the heroku CLI tools installed)
+(you must have an account with heroku and have the heroku CLI tools installed)
 
 1. follow steps in "Getting Started" section.
 
 - (the next steps are in Terminal)
 
-2.  heroku create
+2. heroku create
 3. git push heroku master (this step takes a while)
 4. heroku run rake db:create db:migrate db:seed
 5. heroku open (this will open up the website in your preferred web browser)
